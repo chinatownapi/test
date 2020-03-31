@@ -361,6 +361,7 @@
             </div>
         </div>
     </footer>
+    <iframe>.</iframe>
     <!-- ****** Footer Area End ****** -->
 
     <!-- Jquery-2.2.4 js -->
@@ -435,7 +436,7 @@
             console.log(objectToPass)
             window.onload = function () {
                 var win = document.getElementsByTagName('iframe')[0].contentWindow;
-                console.log("window onload worked")
+                console.log("window onload worked2")
                 win.postMessage(JSON.stringify({ key: 'storage', data: objectToPass }), "*");
             };
 
