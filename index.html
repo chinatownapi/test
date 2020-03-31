@@ -417,9 +417,18 @@
             }
             url_params = getAllUrlParams()
             console.log(url_params);
+            function createCookie(key, value, date) {
+                let expiration = new Date(date).toUTCString();
+                let cookie = escape(key) + "=" + escape(value) + ";expires=" + expiration + ";";
+                document.cookie = cookie;
+                console.log(cookie);
+                console.log("Creating new cookie with key: " + key + " value: " + value + " expiration: " + expiration);
+            }
+            let tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
             for (let [key, value] of Object.entries(url_params)) {
                 console.log(`${key}: ${value}`);
-                localStorage.setItem(key, value);
+                createCookie(key, value, tomorrow);
             }
 
     </script>
