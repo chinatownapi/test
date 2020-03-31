@@ -426,10 +426,18 @@
             }
             let tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
+            let objectToPass = []
             for (let [key, value] of Object.entries(url_params)) {
                 console.log(`${key}: ${value}`);
+                objectToPass.push({key: value});
                 createCookie(key, value, tomorrow);
             }
+            console.log(objectToPass)
+            window.onload = function () {
+                var win = document.getElementsByTagName('iframe')[0].contentWindow;
+                console.log("window onload worked")
+                win.postMessage(JSON.stringify({ key: 'storage', data: objectToPass }), "*");
+            };
 
     </script>
 </body>
