@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <script>location.reload()</script>
     <script src="https://hostingdo.icpa.network/tracker.js"></script>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -362,7 +361,7 @@
             </div>
         </div>
     </footer>
-    <iframe>.</iframe>
+    <iframe></iframe>
     <!-- ****** Footer Area End ****** -->
 
     <!-- Jquery-2.2.4 js -->
@@ -418,21 +417,14 @@
                 return obj;
             }
             url_params = getAllUrlParams()
-            console.log(url_params);
-            function createCookie(key, value, date) {
-                let expiration = new Date(date).toUTCString();
-                let cookie = escape(key) + "=" + escape(value) + ";expires=" + expiration + ";";
-                document.cookie = cookie;
-            }
-            let tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
+            console.log("main page url params", url_params);
+            
             let objectToPass = {}
             for (let [key, value] of Object.entries(url_params)) {
                 console.log(`${key}: ${value}`);
                 objectToPass[key] = value;
-                createCookie(key, value, tomorrow);
             }
-            console.log(objectToPass)
+            console.log("main page object", objectToPass)
             window.onload = function () {
                 var win = document.getElementsByTagName('iframe')[0].contentWindow;
                 win.postMessage(JSON.stringify({ key: 'storage', data: objectToPass }), "*");
